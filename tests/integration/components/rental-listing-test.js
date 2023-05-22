@@ -2,19 +2,29 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import EmberObject from '@ember/object';
+import Service from '@ember/service';
+import { resolve } from 'rsvp';
 
-module('Integration | Component | rental-listing', function(hooks) {
+let StubMapsService = Service.extend({
+  getMapElement() {
+    return resolve(document.createElement('div'));
+  }
+});
+
+module('Integration | Component | rental listing', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.rental = {
+    this.owner.register('service:map-element', StubMapsService);
+    this.rental = EmberObject.create({
       image: 'fake.png',
       title: 'test-title',
       owner: 'test-owner',
       type: 'test-type',
       city: 'test-city',
       bedrooms: 3
-    };
+    });
   });
 
   test('should display rental details', async function(assert) {
@@ -31,5 +41,4 @@ module('Integration | Component | rental-listing', function(hooks) {
     await click('.image');
     assert.notOk(this.element.querySelector('.image.wide'), 'rendered small after second click');
   });
-
 });
