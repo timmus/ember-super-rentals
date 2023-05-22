@@ -7,12 +7,6 @@ const DUMMY_ELEMENT = {};
 module('Unit | Service | maps', function(hooks) {
   setupTest(hooks);
 
-  // Replace this with your real tests.
-  test('it exists', function(assert) {
-    let service = this.owner.lookup('service:maps');
-    assert.ok(service);
-  });
-
   test('should create a new map if one isnt cached for location', async function (assert) {
     assert.expect(5);
     let stubMapService = {
