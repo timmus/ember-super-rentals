@@ -19,7 +19,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* `ember serve`
+* `ember s` or `LEAFLET_MAPS_API_KEY=<your key here> ember s` if you want to hit the maps api
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
